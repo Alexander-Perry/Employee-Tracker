@@ -43,10 +43,11 @@ function mainMenu() {
           displayFromDB("employee");
           break;
         case 'Add a Department':
-          addDepartment("Senior Management");
+          displayDepartment();
           break;
-        // case 'Add a Role':
-        //   break;
+        case 'Add a Role':
+          addRole();
+          break;
         // case 'Add an Employee':
         //   break;
         // case 'Update an Employee role':
@@ -54,6 +55,15 @@ function mainMenu() {
         default: return;
       };
     });
+};
+// Display table from DB query
+function displayDepartment() {
+  return new Promise(function (resolve, reject) {
+    db.query("SELECT * FROM department", function (err, rows) {
+      if (err) return reject(err);
+      resolve(rows);
+    })
+  })
 };
 
 function displayFromDB(table) {
@@ -85,14 +95,110 @@ function displayFromDB(table) {
   }
 };
 
-function addDepartment(department) {
-  db.query("INSERT INTO department(name) VALUES (?)", department, function (err, results) {
-    console.log(colourize, `${department} department added to Database`);
-  });
-  displayFromDB('department');  
+// Function - SQL - Add Department
+function addDepartment() {
+  const questions = [{
+    message: 'What department would you like to Add?',
+    name: 'name',
+    type: 'input',
+    validate: (input) => {
+      if (input) return true
+      else {
+        console.log(colourize, "Department Name required");
+        return false;
+      };
+    }
+  }];
+  inquirer
+    .prompt(questions)
+    .then((data) => {
+      db.query("INSERT INTO department(name) VALUES (?)", data.name, function (err, results) {
+        console.log(colourize, `${data.name} department added to Database`);
+      });
+      displayFromDB('department');
+    });
 };
 
+// Function - SQL - Add Role
+async function addRole() {
+  const departmentList = await displayDepartment().then((rows) => {
+    return rows;
+  });
 
+  const questions = [
+    {
+      message: 'Enter the role title',
+      type: 'input',
+      name: 'title',
+      validate: (input) => {
+        if (input) return true
+        else {
+          console.log(colourize, "Title required");
+          return false;
+        }
+      }
+    },
+    {
+      message: 'Enter the role Salary',
+      type: 'input',
+      name: 'salary'
+    },
+    {
+      message: 'Enter the department ID',
+      type: 'rawlist',
+      name: 'department',
+      choices: departmentList
+    }
+  ];
+  inquirer
+    .prompt(questions)
+    .then((data) => {
+      console.log(Object(data));
+      const { title, salary, department } = data;
+      const department_id = departmentList.find((departmentChoice => departmentChoice.name == department)).id; // Function searches for the ID in the object list from the query based on the name
+      db.query("INSERT INTO role(title, salary, department_id) VALUES (?, ?, ?)", [title, salary, department_id], function (err, results) {
+        console.log(colourize, `${title} role added to Database`);
+        // displayFromDB('role');
+        console.table(departmentList);
+        mainMenu();
+      });
+    }
+    );
+    };
+
+// Function - SQL - Add Employee
+function addEmployee() {
+  const questions = [
+    {
+      message: 'First Name',
+      type: 'input',
+      name: 'first_name',
+      validate: (input) => {
+        if (input) return true
+        else {
+          console.log(colourize, "Name required");
+          return false;
+        };
+      },
+    },
+    {
+      message: 'Last Name',
+      type: 'input',
+      name: 'last_name',
+      validate: (input) => {
+        if (input) return true
+        else {
+          console.log(colourize, "Surname required");
+          return false;
+        };
+      },
+    },
+  ]
+  db.query("INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)", [first_name, last_name, role_id, manager_id], function (err, results) {
+    console.log(colourize, `Employee: ${first_name} ${last_name} added to Database`);
+  });
+  displayFromDB('employee');  
+};
 
 function init(){
   mainMenu();
