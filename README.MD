@@ -9,6 +9,7 @@ node.js and mySQL application to track employees and roles
 * [Usage](#usage)
 * [Contribution Guidelines](#contribution-guidelines)
 * [Testing](#testing)
+* [Media](#media)
 * [Questions](#questions)
 * [Licensing](#licensing)
   
@@ -29,6 +30,8 @@ Run through different console functions
 ## Media
 ### Screenshots
 ![Screenshot 2022-08-10 001100](https://user-images.githubusercontent.com/102524579/183671233-c3de19c8-d29f-4575-8608-82f5f77d9ee0.png)
+### Video
+https://drive.google.com/file/d/17yTw_GSvRLnGfOkcTf0stom7pqAaaKNs/view
 
 
 ## Questions
