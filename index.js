@@ -21,7 +21,8 @@ function mainMenu() {
       'Add a Department',
       'Add a Role',
       'Add an Employee',
-      'Update an Employee role'
+      'Update an Employee role',
+      'Quit'
     ],
   }];
   inquirer
@@ -63,6 +64,8 @@ function mainMenu() {
           await employee.update();
           mainMenu();
           break;
+        case 'Quit':
+          process.exit();
         default: return;
       };
     });
