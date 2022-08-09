@@ -13,7 +13,9 @@ node.js and mySQL application to track employees and roles
 * [Licensing](#licensing)
   
 ## Installation
-In mysql, * SOURCE ./db/schema.sql && ./db/seeds.sql
+* mysql -u root, 
+* SOURCE ./db/schema.sql 
+* SOURCE ./db/seeds.sql
 
 ## Usage
 node index.js
@@ -23,6 +25,11 @@ Clearly document any changes made
 
 ## Testing
 Run through different console functions
+
+## Media
+### Screenshots
+![Screenshot 2022-08-10 001100](https://user-images.githubusercontent.com/102524579/183671233-c3de19c8-d29f-4575-8608-82f5f77d9ee0.png)
+
 
 ## Questions
 Contact Me: 
