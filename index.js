@@ -1,12 +1,17 @@
-const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
-const colourize = '\x1b[33m%s\x1b[0m';
 const department = require('./lib/department');
 const employee = require('./lib/employee')
-const role = require('./lib/role');
-const db = require('./connection');
+const role = require('./lib/role');;
 const queryTable = require('./query');
+
+// Update employee managers.
+// View employees by manager.
+// View employees by department.
+// Delete departments, roles, and employees.
+// View the total utilized budget of a department—in other words, the combined salaries of all employees in that department.
+
+
 
 // Main Menu function
 function mainMenu() {
@@ -22,6 +27,7 @@ function mainMenu() {
       'Add a Role',
       'Add an Employee',
       'Update an Employee role',
+      'Update Employee Manager',
       'Quit'
     ],
   }];
@@ -62,6 +68,10 @@ function mainMenu() {
           break;
         case 'Update an Employee role':
           await employee.update();
+          mainMenu();
+          break;
+        case 'Update Employee Manager':
+          await employee.updateManager();
           mainMenu();
           break;
         case 'Quit':
