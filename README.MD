@@ -2,18 +2,22 @@
 # Employee Tracker
 [![license](https://img.shields.io/static/v1?label=License&message=MIT&color=blue)](https://opensource.org/licenses/MIT)
 ## Description: 
-node.js and mySQL application to track employees and roles
+* node.js and mySQL application to track employees and roles
+* Allows Displaying and adding departments, roles and employees, and updating employee roles. 
 ## Table of Contents: 
 * [Description](#description)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contribution Guidelines](#contribution-guidelines)
 * [Testing](#testing)
+* [Media](#media)
 * [Questions](#questions)
 * [Licensing](#licensing)
   
 ## Installation
-In mysql, * SOURCE ./db/schema.sql && ./db/seeds.sql
+* mysql -u root, 
+* SOURCE ./db/schema.sql 
+* SOURCE ./db/seeds.sql
 
 ## Usage
 node index.js
@@ -23,6 +27,13 @@ Clearly document any changes made
 
 ## Testing
 Run through different console functions
+
+## Media
+### Screenshots
+![Screenshot 2022-08-10 001100](https://user-images.githubusercontent.com/102524579/183671233-c3de19c8-d29f-4575-8608-82f5f77d9ee0.png)
+### Video
+https://drive.google.com/file/d/17yTw_GSvRLnGfOkcTf0stom7pqAaaKNs/view
+
 
 ## Questions
 Contact Me: 
