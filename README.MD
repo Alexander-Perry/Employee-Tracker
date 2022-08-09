@@ -2,7 +2,8 @@
 # Employee Tracker
 [![license](https://img.shields.io/static/v1?label=License&message=MIT&color=blue)](https://opensource.org/licenses/MIT)
 ## Description: 
-node.js and mySQL application to track employees and roles
+* node.js and mySQL application to track employees and roles
+* Allows Displaying and adding departments, roles and employees, and updating employee roles. 
 ## Table of Contents: 
 * [Description](#description)
 * [Installation](#installation)
